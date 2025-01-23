@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <main></main>
+    <main>
+      <form class="main-form">
+        <input
+          class="search-inp js-search-inp"
+          placeholder="Search images..."
+          type="text"
+          name="user_search_query"
+        />
 
+        <button class="search-btn js-search-btn" type="submit">Search</button>
+      </form>
+
+      <ul class="list-gallery"></ul>
+    </main>
+
+    <div class="loader" style="display: none"></div>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
