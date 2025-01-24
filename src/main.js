@@ -63,7 +63,7 @@ const searchUserPhotoApi = e => {
     })
 
     .catch(err => {
-      izlert.show({
+      allert.show({
         title: '❌ Sorry',
         color: 'red',
         position: 'topRight',
