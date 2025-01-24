@@ -63,9 +63,16 @@ const searchUserPhotoApi = e => {
     })
 
     .catch(err => {
-      console.log(err);
+      izlert.show({
+        title: '❌ Sorry',
+        color: 'red',
+        position: 'topRight',
+        message: err,
+      });
     })
-    .finally(hideLoader());
+    .finally(() => {
+      hideLoader();
+    });
 };
 
 form.addEventListener('submit', searchUserPhotoApi);
