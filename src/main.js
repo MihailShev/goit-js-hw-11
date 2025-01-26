@@ -5,8 +5,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { createGalleryListTemplate } from './js/render-functions';
 import { searchPhotoApi } from './js/pixabay-api';
-import { showLoader } from './js/render-functions.js';
-import { hideLoader } from './js/render-functions.js';
+import { showLoader, hideLoader } from './js/render-functions.js';
 
 const form = document.querySelector('.main-form');
 const list = document.querySelector('.list-gallery');
@@ -19,22 +18,23 @@ const searchUserPhotoApi = e => {
 
   const userSearchQuery =
     e.currentTarget.elements.user_search_query.value.trim();
+  list.innerHTML = '';
+
+  if (userSearchQuery === '') {
+    allert.show({
+      title: '❌',
+      color: '#d1c542',
+      position: 'topRight',
+      message: 'Please enter a keyword',
+    });
+
+    form.reset();
+    list.innerHTML = '';
+    return;
+  }
 
   searchPhotoApi(userSearchQuery)
     .then(data => {
-      if (userSearchQuery === '') {
-        allert.show({
-          title: '❌',
-          color: '#d1c542',
-          position: 'topRight',
-          message: 'Please enter a keyword',
-        });
-
-        form.reset();
-        list.innerHTML = '';
-        return;
-      }
-
       if (data.total === 0) {
         allert.show({
           title: '❌ Sorry',
